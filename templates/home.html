@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+<!-- {% load static %} -->
+
+{% block content %}
+    {% for slide in slider %}
+        <div class="slider">
+            {{ slide.title}} <br>
+            {{ slide.description }} <br>          
+            <img src="{{ slide.image.url }} " height=100 alt="">
+            <a href="{{ slide.link }}">{{ slide.link_title }}</a>
+        </div>
+    {% endfor %}
+    {% for person in testemonial %}
+        <div class="testemonial">
+            {{ person.person}} <br>
+            {{ person.position }} <br>          
+            <img src="{{ person.image.url }} " height=100 alt="">
+            <p> {{ person.testemonial_text }}
+            </p>
+        </div>
+    {% endfor %}
+
+{% endblock content %}
