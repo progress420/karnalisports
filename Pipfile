@@ -6,6 +6,8 @@ name = "pypi"
 [packages]
 django = "*"
 pillow = "*"
+django-composite-field = "*"
+django-countries = "*"
 
 [dev-packages]
 

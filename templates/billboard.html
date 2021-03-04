@@ -1,0 +1,48 @@
+{% load static %}
+
+<section class="billboard padding-lr50">
+    <div class="js-billboard">
+        {% for slide in slider %}
+            <div class="billboard__item">
+                <figure><img src="{{ slide.image.url }}" alt="Mountain Marathon"></figure>
+                <div class="billboard__detail">
+                    <div class="grid-container">
+                        <div class="grid-x grid-padding-x">
+                            <div class="col-12 cell">
+                                <h2>{{ slide.title }}</h2>
+                                <p><span>{{ slide.description }}</span></p>
+                                <a href="{{ slide.link }}" class="button">{{ slide.link_title }}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="billboard-thumbnail">
+        <div class="social-media-holder">
+            <div class="grid-container">
+                <div class="grid-x align-right">
+                    <ul class="social-media margin-0 padding-0 no-bullet">
+                        <li><a href="#" class="icon-facebook"></a></li>
+                        <li><a href="#" class="icon-twitter"></a></li>
+                        <li><a href="#" class="icon-linkedin"></a></li>
+                        <li><a href="#" class="icon-pinterest"></a></li>
+                        <li><a href="#" class="icon-rss"></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="grid-container">
+            <div class="grid-x grid-padding-x">
+                <div class="js-billboard-thumbnail cell">
+                    {% for slide in slider %}
+                        <div class="billboard-thumbnail__item">
+                            <h3> 0{{ forloop.counter }} &nbsp;<span class="show-for-xmedium">{{ slide.title }}</span></h3>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

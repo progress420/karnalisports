@@ -1,0 +1,40 @@
+{% load static %}
+
+<header class="header">
+    <div class="grid-container">
+        <div class="grid-x grid-padding-x">
+            <div class="header__site-logo small-6 medium-4 cell">
+                <figure class="js-site-logo">
+                    <a href="/" title="Karnali Sports Club">
+                        <img src="{% static 'img/karnali-sports-club-logo-image.png' %}" alt="Karnali Sports Club">
+                    </a>
+                    <h1>Karnali Sports Club</h1>
+                </figure>
+            </div>
+            <nav class="header__navigation small-6 medium-4 large-10 cell flex-container align-middle">
+                <ul class="slimmenu">
+                    <li class="current-menu-item"><a href="#">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Trial Race</a>
+                        <ul>
+                            <li><a href="#">Trial Race 3.1</a></li>
+                            <li><a href="#">Trial Race 3.2</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header__search small-12 medium-4 large-2 cell flex-container align-middle">
+                <form method="get" role="search" class="search-form" action="#">
+                    <label for="headerSearch">
+                        <span class="screen-reader-text">Search for:</span>
+                        <input type="search" id="headerSearch" class="search-field" placeholder="Search..." name="s"
+                               value=""/>
+                    </label>
+                    <button type="submit" class="search-submit icon-search" value="Go"></button>
+                </form>
+            </div>
+        </div>
+    </div>
+</header>

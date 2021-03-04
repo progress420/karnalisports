@@ -1,0 +1,546 @@
+<!-- 
+title: Homepage
+description: Homepage detail goes here. 
+-->
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% include 'billboard.html' %}
+<section class="section section-entry background-gradient-black-body-downward padding-tb50">
+    <div class="grid-container">
+        <div class="grid-x grid-padding-x align-center">
+            <div class="small-12 xlarge-8 cell text-center">
+                <h2 class="titlestyle1">Adventure reimagined</h2>
+                <p>Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id
+                    elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit.
+                    Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu
+                    in elit .....</p>
+                <ul class="liststyle1 margin-0 padding-0 no-bullet medium-flex-container align-center">
+                    <li>
+                        <figure>
+                            <img src="{% static 'img/icon-player.png' %}">
+                        </figure>
+                        <h3>Trained<br/>Players</h3>
+                    </li>
+                    <li>
+                        <figure>
+                            <img src="{% static 'img/icon-high-altitude.png' %}">
+                        </figure>
+                        <h3>High Altitude<br/>Training Center</h3>
+                    </li>
+                    <li>
+                        <figure>
+                            <img src="{% static 'img/icon-medal.png' %}">
+                        </figure>
+                        <h3>Gold Medal &amp;<br/>Trophy Winner</h3>
+                    </li>
+                </ul>
+                <a href="#" title="View More" class="button">View More</a>
+            </div>
+        </div>
+    </div>
+    <div class="grid-container section-timer text-center">
+        <div class="grid-x grid-padding-x">
+            <div class="small-12 cell">
+                <h2 class="titlestyle1">
+                    <small>June 21, 2019</small>
+                    Ultra Marathon 2019
+                </h2>
+                <div class="section-timer__content" id="deadline" data-enddate="October 25 2019 23:59:59">
+                    <span class="section-timer__days">20<small>Days</small></span>
+                    <span class="section-timer__hours">18<small>Hrs</small></span>
+                    <span class="section-timer__minutes">15<small>Min</small></span>
+                    <span class="section-timer__seconds">54<small>Sec</small></span>
+                    <figure class="section-image-placer">
+                        <img src="{{root}}img/ultra-marathon-runner-image.png">
+                    </figure>
+                </div>
+                <p>Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id
+                    elit..</p>
+                <a href="#" class="button" title="Book Me In">Book Me In</a>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="section section-trail-race padding-tb50">
+    <div class="grid-container">
+        <div class="grid-x grid-padding-x">
+            <div class="small-12 cell">
+                <h2 class="titlestyle2">
+                    <span class="titlestyle2__shape-box">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+                    <strong>Trail Race</strong>
+                </h2>
+            </div>
+        </div>
+        <div class="grid-x grid-padding-x">
+            <div class="trail-wrap small-12 cell">
+                <div class="section-trail-race__item span-col-3 span-row-2">
+                    <div class="section-trail-race__content-holder position-relative" style="background-image: url('{{root}}uploads/trail-race-image-1.jpg')">
+                        <figure class="section-trail-race__image background-gradient-black-transparent-upward-before">
+                            <img src="{{root}}uploads/trail-race-image-1.jpg" alt="Trail Race">
+                        </figure>
+                        <div class="section-trail-race__detail position-absolute position-bottom">
+                            <h3>Gosaikunda to Helambu Trail Race</h3>
+                            <span class="section-trail-race__timeline-tag">
+                            <span>Marathon</span>
+                            <span>2019/02/20 - 2019/05/05</span>
+                        </span>
+                            <p>Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum...</p>
+                            <a href="#" class="text-link">View More <span class="icon-right-long-arrow"></span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="section-trail-race__item span-col-3">
+                    <div class="section-trail-race__content-holder">
+                        <div class="section-trail-race__detail">
+                            <h3>Everest <br/>Marathon</h3>
+                            <span class="section-trail-race__timeline-tag">
+                            <span>Marathon</span>
+                            <span>2019/03/01 - 2019/03/25</span>
+                        </span>
+                            <p>Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum...</p>
+                            <a href="#" class="text-link">View More <span class="icon-right-long-arrow"></span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="section-trail-race__item span-col-3">
+                    <div class="section-trail-race__content-holder">
+                        <div class="section-trail-race__detail">
+                            <h3>The Great Buddhist Master Trail Marathon</h3>
+                            <span class="section-trail-race__timeline-tag">
+                            <span>Marathon</span>
+                            <span>2019/04/11 - 2019/04/27</span>
+                        </span>
+                            <p>Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum...</p>
+                            <a href="#" class="text-link">View More <span class="icon-right-long-arrow"></span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="section-trail-race__item span-col-4">
+                    <div class="section-trail-race__content-holder medium-flex-container">
+                        <figure class="section-trail-race__image" style="background-image: url('{{root}}uploads/trail-race-image-2.jpg')">
+                            <img src="{{root}}uploads/trail-race-image-2.jpg" alt="Trail Race">
+                        </figure>
+                        <div class="section-trail-race__detail">
+                            <h3>The Original Everest Marathon</h3>
+                            <span class="section-trail-race__timeline-tag">
+                            <span>Marathon</span>
+                            <span>2019/06/13 - 2019/07/08</span>
+                        </span>
+                            <p>Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum...</p>
+                            <a href="#" class="text-link">View More <span class="icon-right-long-arrow"></span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="section-trail-race__item span-col-4">
+                    <div class="section-trail-race__content-holder medium-flex-container">
+                        <figure class="section-trail-race__image" style="background-image: url('{{root}}uploads/trail-race-image-3.jpg')">
+                            <img src="{{root}}uploads/trail-race-image-3.jpg" alt="Trail Race">
+                        </figure>
+                        <div class="section-trail-race__detail">
+                            <h3>Manaslu Mountain Trail Race</h3>
+                            <span class="section-trail-race__timeline-tag">
+                            <span>Marathon</span>
+                            <span>2019/06/13 - 2019/07/08</span>
+                        </span>
+                            <p>Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum...</p>
+                            <a href="#" class="text-link">View More <span class="icon-right-long-arrow"></span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="section-trail-race__item span-col-2 span-row-2 trail-banner">
+                    <div class="section-trail-race__content-holder section-trail-race__content-holder--border-bottom position-relative" style="background-image: url('{{root}}uploads/trail-race-image-4.jpg')">
+                        <figure class="section-trail-race__image background-gradient-black-transparent-downward-before">
+                            <img src="{{root}}uploads/trail-race-image-4.jpg" alt="Trail Race">
+                        </figure>
+                        <div class="section-trail-race__detail position-absolute position-top">
+                            <h3>Not a Runner ? <br/>Still want to visit nepal ?</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="grid-x grid-padding-x">
+            <div class="small-12 cell text-center">
+                <a href="#" class="button" title="View All Trip Race">View All Trip Race</a>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="section section-campaign">
+    <div class="grid-container">
+        <div class="grid-x grid-padding-x">
+            <div class="small-12 large-6 cell">
+                <h2 class="titlestyle2">
+                    <span class="titlestyle2__shape-box">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+                    <strong>Training Campaigns</strong>
+                </h2>
+                <div class="grid-x grid-padding-x content-list">
+                    <div class="small-12 cell content-list__item">
+                        <div class="content-list__content-holder medium-flex-container">
+                            <figure class="content-list__image"  style="background-image: url('{{root}}uploads/trail-race-image-2.jpg')">
+                                <img src="{{root}}uploads/trail-race-image-2.jpg" alt="Trail Race">
+                            </figure>
+                            <div class="content-list__detail">
+                                <h3>Trail Race <br/>Campaigns</h3>
+                                <span class="content-list__timeline-tag">
+                                    <span>Marathon</span>
+                                    <span>2019/06/13 - 2019/07/08</span>
+                                </span>
+                                <p>Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum...</p>
+                                <a href="#" class="text-link">View More <span class="icon-right-long-arrow"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="small-12 cell content-list__item">
+                        <div class="content-list__content-holder medium-flex-container">
+                            <figure class="content-list__image"  style="background-image: url('{{root}}uploads/trail-race-image-3.jpg')">
+                                <img src="{{root}}uploads/trail-race-image-3.jpg" alt="Trail Race">
+                            </figure>
+                            <div class="content-list__detail">
+                                <h3>Half marathon Campaigns</h3>
+                                <span class="content-list__timeline-tag">
+                                    <span>Marathon</span>
+                                    <span>2019/06/13 - 2019/07/08</span>
+                                </span>
+                                <p>Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum...</p>
+                                <a href="#" class="text-link">View More <span class="icon-right-long-arrow"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="#" class="button">View all Training List</a>
+            </div>
+            <div class="small-12 large-6 cell">
+                <h2 class="titlestyle2 text-large-right">
+                    <strong>Gallery</strong>
+                    <span class="titlestyle2__shape-box titlestyle2__shape-box-right">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+                </h2>
+                <div class="grid-x grid-padding-x gallery-box small-up-2 medium-up-3">
+                    <div class="cell gallery-box__item">
+                        <a href="{{root}}uploads/gallery-image-1.jpg" data-fancybox="gallery">
+                            <img src="{{root}}uploads/gallery-image-1.jpg" alt="">
+                        </a>
+                    </div>
+                    <div class="cell gallery-box__item">
+                        <a href="{{root}}uploads/gallery-image-2.jpg" data-fancybox="gallery">
+                            <img src="{{root}}uploads/gallery-image-2.jpg" alt="">
+                        </a>
+                    </div>
+                    <div class="cell gallery-box__item">
+                        <a href="{{root}}uploads/gallery-image-3.jpg" data-fancybox="gallery">
+                            <img src="{{root}}uploads/gallery-image-3.jpg" alt="">
+                        </a>
+                    </div>
+                    <div class="cell gallery-box__item">
+                        <a href="{{root}}uploads/gallery-image-4.jpg" data-fancybox="gallery">
+                            <img src="{{root}}uploads/gallery-image-4.jpg" alt="">
+                        </a>
+                    </div>
+                    <div class="cell gallery-box__item">
+                        <a href="{{root}}uploads/gallery-image-5.jpg" data-fancybox="gallery">
+                            <img src="{{root}}uploads/gallery-image-5.jpg" alt="">
+                        </a>
+                    </div>
+                    <div class="cell gallery-box__item">
+                        <a href="{{root}}uploads/gallery-image-6.jpg" data-fancybox="gallery">
+                            <img src="{{root}}uploads/gallery-image-6.jpg" alt="">
+                        </a>
+                    </div>
+                    <div class="cell gallery-box__item">
+                        <a href="{{root}}uploads/gallery-image-7.jpg" data-fancybox="gallery">
+                            <img src="{{root}}uploads/gallery-image-7.jpg" alt="">
+                        </a>
+                    </div>
+                    <div class="cell gallery-box__item">
+                        <a href="{{root}}uploads/gallery-image-8.jpg" data-fancybox="gallery">
+                            <img src="{{root}}uploads/gallery-image-8.jpg" alt="">
+                        </a>
+                    </div>
+                    <div class="cell gallery-box__item">
+                        <a href="{{root}}uploads/gallery-image-9.jpg" data-fancybox="gallery">
+                            <img src="{{root}}uploads/gallery-image-9.jpg" alt="">
+                        </a>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <a href="#" title="View Gallery" class="text-link">View Gallery <span
+                            class="icon-right-long-arrow"></span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="grid-container padding-top50">
+        <div class="grid-x grid-padding-x">
+            <div class="small-12 large-4 cell">
+                <h2 class="titlestyle2">
+                    <span class="titlestyle2__shape-box">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+                    <strong>Latest Blog</strong>
+                </h2>
+                <div class="grid-x grid-padding-x content-list content-list--secondary">
+                    <div class="small-12 cell content-list__item">
+                        <div class="content-list__content-holder flex-container align-middle">
+                            <figure class="content-list__image" style="background-image: url('{{root}}uploads/blog-image-1.jpg')">
+                                <img src="{{root}}uploads/blog-image-1.jpg" alt="Trail Race">
+                            </figure>
+                            <div class="content-list__detail">
+                                <h3>Trail Race Campaigns</h3>
+                                <p>Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum...</p>
+                                <a href="#" class="text-link">Read More <span class="icon-right-long-arrow"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="small-12 cell content-list__item">
+                        <div class="content-list__content-holder flex-container align-middle">
+                            <figure class="content-list__image" style="background-image: url('{{root}}uploads/blog-image-1.jpg')">
+                                <img src="{{root}}uploads/blog-image-1.jpg" alt="Trail Race">
+                            </figure>
+                            <div class="content-list__detail">
+                                <h3>Half marathon Campaigns</h3>
+                                <p>Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum...</p>
+                                <a href="#" class="text-link">Read More <span class="icon-right-long-arrow"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="small-12 cell content-list__item">
+                        <div class="content-list__content-holder flex-container align-middle">
+                            <figure class="content-list__image" style="background-image: url('{{root}}uploads/blog-image-1.jpg')">
+                                <img src="{{root}}uploads/blog-image-1.jpg" alt="Trail Race">
+                            </figure>
+                            <div class="content-list__detail">
+                                <h3>Half marathon Campaigns</h3>
+                                <p>Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum...</p>
+                                <a href="#" class="text-link">Read More <span class="icon-right-long-arrow"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="#" class="button" title="Read All Blog">Read All Blog</a>
+            </div>
+            <div class="small-12 large-4 cell">
+                <h2 class="titlestyle2">
+                    <span class="titlestyle2__shape-box">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+                    <strong>Started Line Notice</strong>
+                </h2>
+                <div class="grid-x grid-padding-x content-list content-list--secondary">
+                    <div class="small-12 cell content-list__item">
+                        <div class="content-list__content-holder flex-container align-top">
+                            <span class="content-list__date-box">
+                                <span class="day">20</span>
+                                <span class="month">Sep</span>
+                            </span>
+                            <div class="content-list__detail">
+                                <h3>Elit auctor, nisi elit</h3>
+                                <p>Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum...</p>
+                                <a href="#" class="text-link">Read More <span class="icon-right-long-arrow"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="small-12 cell content-list__item">
+                        <div class="content-list__content-holder flex-container align-top">
+                            <span class="content-list__date-box">
+                                <span class="day">20</span>
+                                <span class="month">Sep</span>
+                            </span>
+                            <div class="content-list__detail">
+                                <h3>Elit auctor, nisi elit</h3>
+                                <p>Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum...</p>
+                                <a href="#" class="text-link">Read More <span class="icon-right-long-arrow"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="small-12 cell content-list__item">
+                        <div class="content-list__content-holder flex-container align-top">
+                            <span class="content-list__date-box">
+                                <span class="day">20</span>
+                                <span class="month">Sep</span>
+                            </span>
+                            <div class="content-list__detail">
+                                <h3>Elit auctor, nisi elit</h3>
+                                <p>Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum...</p>
+                                <a href="#" class="text-link">Read More <span class="icon-right-long-arrow"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="#" class="button" title="Read All Blog">Read All Blog</a>
+            </div>
+            <div class="small-12 large-4 cell">
+                <h2 class="titlestyle2 text-large-right">
+                    <strong>Success Stories</strong>
+                    <span class="titlestyle2__shape-box titlestyle2__shape-box-right">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+                </h2>
+                <div class="grid-x grid-padding-x content-list content-list--secondary">
+                    <div class="small-12 cell content-list__item">
+                        <div class="content-list__content-holder flex-container align-middle">
+                            <figure class="content-list__image" style="background-image: url('{{root}}uploads/stories-image-1.jpg')">
+                                <img src="{{root}}uploads/stories-image-1.jpg" alt="Trail Race">
+                            </figure>
+                            <div class="content-list__detail">
+                                <h3>Trail Race Campaigns</h3>
+                                <p>Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum...</p>
+                                <a href="#" class="text-link">Read More <span class="icon-right-long-arrow"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="small-12 cell content-list__item">
+                        <div class="content-list__content-holder flex-container align-middle">
+                            <figure class="content-list__image" style="background-image: url('{{root}}uploads/stories-image-1.jpg')">
+                                <img src="{{root}}uploads/stories-image-1.jpg" alt="Trail Race">
+                            </figure>
+                            <div class="content-list__detail">
+                                <h3>Half marathon Campaigns</h3>
+                                <p>Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum...</p>
+                                <a href="#" class="text-link">Read More <span class="icon-right-long-arrow"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="small-12 cell content-list__item">
+                        <div class="content-list__content-holder flex-container align-middle">
+                            <figure class="content-list__image" style="background-image: url('{{root}}uploads/stories-image-1.jpg')">
+                                <img src="{{root}}uploads/stories-image-1.jpg" alt="Trail Race">
+                            </figure>
+                            <div class="content-list__detail">
+                                <h3>Half marathon Campaigns</h3>
+                                <p>Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum...</p>
+                                <a href="#" class="text-link">Read More <span class="icon-right-long-arrow"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="#" class="button" title="View All Stories">View All Stories</a>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="section section-testimonial padding-t30-b15 background-gradient-black-transparent-upward-before">
+    <div class="grid-container position-relative">
+        <div class="grid-x grid-padding-x">
+            <div class="small-12 cell">
+                <h2 class="titlestyle2">
+                    <span class="titlestyle2__shape-box">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+                    <strong>Testimonials</strong>
+                </h2>
+                <div class="grid-container testimonial-list">
+                    <div class="grid-x grid-padding-x js-carousel">
+                        <div class="small-12 cell testimonial-list__item">
+                            <div class="testimonial-list__box flex-container align-center">
+                                <figure class="testimonial-list__image">
+                                    <img src="{{root}}uploads/testimony-image.jpg" alt="">
+                                </figure>
+                                <div class="testimonial-list__detail">
+                                    <div class="testimonial-list__title flex-container align-middle">
+                                        <span class="icon-left-long-arrow"></span>
+                                        <h3>John Parker
+                                            <small>Founder at Karnali Sports Club</small>
+                                        </h3>
+                                        <span class="icon-right-long-arrow"></span>
+                                    </div>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                        incididunt ut labore</p>
+                                    <a href="#" class="text-link">View More <span class="icon-right-long-arrow"></span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="small-12 cell testimonial-list__item">
+                            <div class="testimonial-list__box flex-container align-center">
+                                <figure class="testimonial-list__image">
+                                    <img src="{{root}}uploads/testimony-image.jpg" alt="">
+                                </figure>
+                                <div class="testimonial-list__detail">
+                                    <div class="testimonial-list__title flex-container align-middle">
+                                        <span class="icon-left-long-arrow"></span>
+                                        <h3>John Parker
+                                            <small>Founder at Karnali Sports Club</small>
+                                        </h3>
+                                        <span class="icon-right-long-arrow"></span>
+                                    </div>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                        incididunt ut labore</p>
+                                    <a href="#" class="text-link">View More <span class="icon-right-long-arrow"></span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="small-12 cell testimonial-list__item">
+                            <div class="testimonial-list__box flex-container align-center">
+                                <figure class="testimonial-list__image">
+                                    <img src="{{root}}uploads/testimony-image.jpg" alt="">
+                                </figure>
+                                <div class="testimonial-list__detail">
+                                    <div class="testimonial-list__title flex-container align-middle">
+                                        <span class="icon-left-long-arrow"></span>
+                                        <h3>John Parker
+                                            <small>Founder at Karnali Sports Club</small>
+                                        </h3>
+                                        <span class="icon-right-long-arrow"></span>
+                                    </div>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                        incididunt ut labore</p>
+                                    <a href="#" class="text-link">View More <span class="icon-right-long-arrow"></span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="small-12 cell testimonial-list__item">
+                            <div class="testimonial-list__box flex-container align-center">
+                                <figure class="testimonial-list__image">
+                                    <img src="{{root}}uploads/testimony-image.jpg" alt="">
+                                </figure>
+                                <div class="testimonial-list__detail">
+                                    <div class="testimonial-list__title flex-container align-middle">
+                                        <span class="icon-left-long-arrow"></span>
+                                        <h3>John Parker
+                                            <small>Founder at Karnali Sports Club</small>
+                                        </h3>
+                                        <span class="icon-right-long-arrow"></span>
+                                    </div>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                        incididunt ut labore</p>
+                                    <a href="#" class="text-link">View More <span class="icon-right-long-arrow"></span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

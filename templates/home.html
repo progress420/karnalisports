@@ -10,11 +10,23 @@
             <a href="{{ slide.link }}">{{ slide.link_title }}</a>
         </div>
     {% endfor %}
+
+    {% for run in marathon %}
+        <div class="marathon">
+            {{ run.name}} <br>
+            {{ run.date }} <br>      
+            {{ run.tag }} <br>    
+            <p> {{ run.description }}
+            </p>
+            <a href="{% url 'book' run.pk %}">link {{run.name}}</a>
+        </div>
+    {% endfor %}
+
     {% for person in testemonial %}
         <div class="testemonial">
             {{ person.person}} <br>
             {{ person.position }} <br>          
-            <img src="{{ person.image.url }} " height=100 alt="">
+            <img src="{{ person.image.url }}" height=100 alt="">
             <p> {{ person.testemonial_text }}
             </p>
         </div>
