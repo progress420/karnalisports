@@ -43,16 +43,16 @@ description: Homepage detail goes here.
         <div class="grid-x grid-padding-x">
             <div class="small-12 cell">
                 <h2 class="titlestyle1">
-                    <small>June 21, 2019</small>
-                    Ultra Marathon 2019
+                    <small>{{ timer.marathon.date }}</small>
+                    {{ timer.marathon.name }}
                 </h2>
-                <div class="section-timer__content" id="deadline" data-enddate="October 25 2019 23:59:59">
+                <div class="section-timer__content" id="deadline" data-enddate="{{timer.marathon.date}} {{timer.time | date:"H:i:s" }}">
                     <span class="section-timer__days">20<small>Days</small></span>
                     <span class="section-timer__hours">18<small>Hrs</small></span>
                     <span class="section-timer__minutes">15<small>Min</small></span>
                     <span class="section-timer__seconds">54<small>Sec</small></span>
                     <figure class="section-image-placer">
-                        <img src="{{root}}img/ultra-marathon-runner-image.png">
+                        <img src="{% static 'img/ultra-marathon-runner-image.png' %}">
                     </figure>
                 </div>
                 <p>Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id
@@ -86,12 +86,12 @@ description: Homepage detail goes here.
                             <img src="{{root}}uploads/trail-race-image-1.jpg" alt="Trail Race">
                         </figure>
                         <div class="section-trail-race__detail position-absolute position-bottom">
-                            <h3>Gosaikunda to Helambu Trail Race</h3>
+                            <h3>{{ marathon.0.name }}</h3>
                             <span class="section-trail-race__timeline-tag">
-                            <span>Marathon</span>
-                            <span>2019/02/20 - 2019/05/05</span>
+                            <span>{{ marathon.0.tag }}</span>
+                            <span>{{ marathon.0.date_start }} - {{ marathon.0.date_end }}</span>
                         </span>
-                            <p>Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum...</p>
+                            <p>{{ marathon.0.marathon_type.description|truncatechars:50 }}...</p>
                             <a href="#" class="text-link">View More <span class="icon-right-long-arrow"></span></a>
                         </div>
                     </div>
@@ -99,12 +99,12 @@ description: Homepage detail goes here.
                 <div class="section-trail-race__item span-col-3">
                     <div class="section-trail-race__content-holder">
                         <div class="section-trail-race__detail">
-                            <h3>Everest <br/>Marathon</h3>
+                            <h3>{{ marathon.1.name}}</h3>
                             <span class="section-trail-race__timeline-tag">
-                            <span>Marathon</span>
-                            <span>2019/03/01 - 2019/03/25</span>
+                            <span>{{ marathon.1.tag }}</span>
+                            <span{{ marathon.1.date_start }} - {{ marathon.1.date_end }}</span>
                         </span>
-                            <p>Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum...</p>
+                            <p>{{ marathon.1.marathon_type.description|truncatechars:50 }}...</p>
                             <a href="#" class="text-link">View More <span class="icon-right-long-arrow"></span></a>
                         </div>
                     </div>
@@ -112,12 +112,12 @@ description: Homepage detail goes here.
                 <div class="section-trail-race__item span-col-3">
                     <div class="section-trail-race__content-holder">
                         <div class="section-trail-race__detail">
-                            <h3>The Great Buddhist Master Trail Marathon</h3>
+                            <h3>{{ marathon.2.name}}</h3>
                             <span class="section-trail-race__timeline-tag">
-                            <span>Marathon</span>
-                            <span>2019/04/11 - 2019/04/27</span>
+                            <span>{{ marathon.2.tag }}</span>
+                            <span>{{ marathon.2.date_start }} - {{ marathon.2.date_end }}</span>
                         </span>
-                            <p>Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum...</p>
+                            <p>{{ marathon.2.marathon_type.description|truncatechars:50 }}...</p>
                             <a href="#" class="text-link">View More <span class="icon-right-long-arrow"></span></a>
                         </div>
                     </div>
@@ -128,12 +128,12 @@ description: Homepage detail goes here.
                             <img src="{{root}}uploads/trail-race-image-2.jpg" alt="Trail Race">
                         </figure>
                         <div class="section-trail-race__detail">
-                            <h3>The Original Everest Marathon</h3>
+                            <h3>{{ marathon.3.name}}</h3>
                             <span class="section-trail-race__timeline-tag">
-                            <span>Marathon</span>
-                            <span>2019/06/13 - 2019/07/08</span>
+                            <span>{{ marathon.3.tag }}</span>
+                            <span>{{ marathon.3.date_start }} - {{ marathon.3.date_end }}</span>
                         </span>
-                            <p>Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum...</p>
+                            <p>{{ marathon.3.marathon_type.description|truncatechars:50 }}...</p>
                             <a href="#" class="text-link">View More <span class="icon-right-long-arrow"></span></a>
                         </div>
                     </div>
@@ -144,12 +144,12 @@ description: Homepage detail goes here.
                             <img src="{{root}}uploads/trail-race-image-3.jpg" alt="Trail Race">
                         </figure>
                         <div class="section-trail-race__detail">
-                            <h3>Manaslu Mountain Trail Race</h3>
+                            <h3>{{ marathon.4.name}}</h3>
                             <span class="section-trail-race__timeline-tag">
-                            <span>Marathon</span>
-                            <span>2019/06/13 - 2019/07/08</span>
+                            <span>{{ marathon.4.tag }}</span>
+                            <span>{{ marathon.4.date_start }} - {{ marathon.4.date_end }}</span>
                         </span>
-                            <p>Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum...</p>
+                            <p>{{ marathon.4.marathon_type.description|truncatechars:50 }}...</p>
                             <a href="#" class="text-link">View More <span class="icon-right-long-arrow"></span></a>
                         </div>
                     </div>
@@ -235,51 +235,13 @@ description: Homepage detail goes here.
                     </span>
                 </h2>
                 <div class="grid-x grid-padding-x gallery-box small-up-2 medium-up-3">
-                    <div class="cell gallery-box__item">
-                        <a href="{{root}}uploads/gallery-image-1.jpg" data-fancybox="gallery">
-                            <img src="{{root}}uploads/gallery-image-1.jpg" alt="">
-                        </a>
-                    </div>
-                    <div class="cell gallery-box__item">
-                        <a href="{{root}}uploads/gallery-image-2.jpg" data-fancybox="gallery">
-                            <img src="{{root}}uploads/gallery-image-2.jpg" alt="">
-                        </a>
-                    </div>
-                    <div class="cell gallery-box__item">
-                        <a href="{{root}}uploads/gallery-image-3.jpg" data-fancybox="gallery">
-                            <img src="{{root}}uploads/gallery-image-3.jpg" alt="">
-                        </a>
-                    </div>
-                    <div class="cell gallery-box__item">
-                        <a href="{{root}}uploads/gallery-image-4.jpg" data-fancybox="gallery">
-                            <img src="{{root}}uploads/gallery-image-4.jpg" alt="">
-                        </a>
-                    </div>
-                    <div class="cell gallery-box__item">
-                        <a href="{{root}}uploads/gallery-image-5.jpg" data-fancybox="gallery">
-                            <img src="{{root}}uploads/gallery-image-5.jpg" alt="">
-                        </a>
-                    </div>
-                    <div class="cell gallery-box__item">
-                        <a href="{{root}}uploads/gallery-image-6.jpg" data-fancybox="gallery">
-                            <img src="{{root}}uploads/gallery-image-6.jpg" alt="">
-                        </a>
-                    </div>
-                    <div class="cell gallery-box__item">
-                        <a href="{{root}}uploads/gallery-image-7.jpg" data-fancybox="gallery">
-                            <img src="{{root}}uploads/gallery-image-7.jpg" alt="">
-                        </a>
-                    </div>
-                    <div class="cell gallery-box__item">
-                        <a href="{{root}}uploads/gallery-image-8.jpg" data-fancybox="gallery">
-                            <img src="{{root}}uploads/gallery-image-8.jpg" alt="">
-                        </a>
-                    </div>
-                    <div class="cell gallery-box__item">
-                        <a href="{{root}}uploads/gallery-image-9.jpg" data-fancybox="gallery">
-                            <img src="{{root}}uploads/gallery-image-9.jpg" alt="">
-                        </a>
-                    </div>
+                    {% for pic in gallery %}
+                        <div class="cell gallery-box__item">
+                            <a href="{{ pic.image.url }}" data-fancybox="gallery">
+                                <img src="{{ pic.image.url }}" alt="">
+                            </a>
+                        </div>
+                    {% endfor %}
                 </div>
                 <div class="text-center">
                     <a href="#" title="View Gallery" class="text-link">View Gallery <span
@@ -461,82 +423,26 @@ description: Homepage detail goes here.
                 </h2>
                 <div class="grid-container testimonial-list">
                     <div class="grid-x grid-padding-x js-carousel">
-                        <div class="small-12 cell testimonial-list__item">
-                            <div class="testimonial-list__box flex-container align-center">
-                                <figure class="testimonial-list__image">
-                                    <img src="{{root}}uploads/testimony-image.jpg" alt="">
-                                </figure>
-                                <div class="testimonial-list__detail">
-                                    <div class="testimonial-list__title flex-container align-middle">
-                                        <span class="icon-left-long-arrow"></span>
-                                        <h3>John Parker
-                                            <small>Founder at Karnali Sports Club</small>
-                                        </h3>
-                                        <span class="icon-right-long-arrow"></span>
+                        {% for person in testemonial %}
+                            <div class="small-12 cell testimonial-list__item">
+                                <div class="testimonial-list__box flex-container align-center">
+                                    <figure class="testimonial-list__image">
+                                        <img src="{{ person.image.url }}" alt="">
+                                    </figure>
+                                    <div class="testimonial-list__detail">
+                                        <div class="testimonial-list__title flex-container align-middle">
+                                            <span class="icon-left-long-arrow"></span>
+                                            <h3>{{ person.person }}
+                                                <small>{{ person.position }}</small>
+                                            </h3>
+                                            <span class="icon-right-long-arrow"></span>
+                                        </div>
+                                        <p>{{ person.testemonial_text }}</p>
+                                        <a href="#" class="text-link">View More <span class="icon-right-long-arrow"></span></a>
                                     </div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                        incididunt ut labore</p>
-                                    <a href="#" class="text-link">View More <span class="icon-right-long-arrow"></span></a>
                                 </div>
                             </div>
-                        </div>
-                        <div class="small-12 cell testimonial-list__item">
-                            <div class="testimonial-list__box flex-container align-center">
-                                <figure class="testimonial-list__image">
-                                    <img src="{{root}}uploads/testimony-image.jpg" alt="">
-                                </figure>
-                                <div class="testimonial-list__detail">
-                                    <div class="testimonial-list__title flex-container align-middle">
-                                        <span class="icon-left-long-arrow"></span>
-                                        <h3>John Parker
-                                            <small>Founder at Karnali Sports Club</small>
-                                        </h3>
-                                        <span class="icon-right-long-arrow"></span>
-                                    </div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                        incididunt ut labore</p>
-                                    <a href="#" class="text-link">View More <span class="icon-right-long-arrow"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="small-12 cell testimonial-list__item">
-                            <div class="testimonial-list__box flex-container align-center">
-                                <figure class="testimonial-list__image">
-                                    <img src="{{root}}uploads/testimony-image.jpg" alt="">
-                                </figure>
-                                <div class="testimonial-list__detail">
-                                    <div class="testimonial-list__title flex-container align-middle">
-                                        <span class="icon-left-long-arrow"></span>
-                                        <h3>John Parker
-                                            <small>Founder at Karnali Sports Club</small>
-                                        </h3>
-                                        <span class="icon-right-long-arrow"></span>
-                                    </div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                        incididunt ut labore</p>
-                                    <a href="#" class="text-link">View More <span class="icon-right-long-arrow"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="small-12 cell testimonial-list__item">
-                            <div class="testimonial-list__box flex-container align-center">
-                                <figure class="testimonial-list__image">
-                                    <img src="{{root}}uploads/testimony-image.jpg" alt="">
-                                </figure>
-                                <div class="testimonial-list__detail">
-                                    <div class="testimonial-list__title flex-container align-middle">
-                                        <span class="icon-left-long-arrow"></span>
-                                        <h3>John Parker
-                                            <small>Founder at Karnali Sports Club</small>
-                                        </h3>
-                                        <span class="icon-right-long-arrow"></span>
-                                    </div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                        incididunt ut labore</p>
-                                    <a href="#" class="text-link">View More <span class="icon-right-long-arrow"></span></a>
-                                </div>
-                            </div>
-                        </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>

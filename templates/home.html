@@ -32,4 +32,8 @@
         </div>
     {% endfor %}
 
+    {% for pic in gallery %}
+            <img src="{{ pic.image.url }}" height=100 alt="">
+    {% endfor %}
+
 {% endblock content %}

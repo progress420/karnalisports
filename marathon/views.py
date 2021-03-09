@@ -5,7 +5,10 @@ from django.urls import reverse
 from django.http import HttpResponseRedirect
 from datetime import date
 
-from .models import Slider, Testemonial, Marathon, MarathonBooking, FAQ
+from .models import (
+    Slider, Testemonial, Marathon, MarathonBooking, FAQ,
+    Timer, Itinerary, Gallery
+) 
 from .forms import BookForm
 
 # class HomePageView(ListView):
@@ -15,12 +18,21 @@ from .forms import BookForm
 def homepage(request):
     slider = Slider.objects.exclude(image_order=0)
     testemonial = Testemonial.objects.all()
-    marathon = Marathon.objects.exclude(is_active=False)
+    marathon = Marathon.objects.exclude(is_active=False)[:5]
+    mthn_cat_list = []
+    for mthn in marathon:
+        mthn_cat_list.append(mthn.marathon_type.id)
+    timer = Timer.objects.get(is_active=True)
+    gallery = Gallery.objects.all()
+    # timer.time.strftime("%H:%M:%S")
     context = {
         'slider': slider,
         'testemonial': testemonial,
         'marathon' : marathon,
         'range' : range(1,4),
+        'timer' : timer,
+        'gallery' : gallery,
+        'mthn_cat_list': mthn_cat_list,
     }
     return render(request, "index.html", context)
 
@@ -42,6 +54,7 @@ def bookingview(request, pk):
     marathon = get_object_or_404(Marathon, pk=pk)
     marathon_category = marathon.marathon_type
     faq = FAQ.objects.filter(category=marathon_category)
+    itinerary = Itinerary.objects.filter(category=marathon)
     date_present = date.today()
     if marathon.date > date_present:
         if request.method == "POST":
@@ -53,9 +66,17 @@ def bookingview(request, pk):
                 return redirect('home')
         else:
             form = BookForm() 
-        return render(request, 'book.html', {'form':form, 'faq': faq})
+        return render(request, 'landing-page.html', {
+            'form' : form,
+            'faq' : faq,
+            'marathon' : marathon,
+            'path' : itinerary,
+        })
     else:
-        return render(request, 'book.html', {'faq':faq}) 
+        return render(request, 'landing-page.html', {
+            'faq' : faq,
+            'maraathon' : marathon,
+        }) 
 
         
 
