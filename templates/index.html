@@ -46,7 +46,7 @@ description: Homepage detail goes here.
                     <small>{{ timer.marathon.date }}</small>
                     {{ timer.marathon.name }}
                 </h2>
-                <div class="section-timer__content" id="deadline" data-enddate="{{timer.marathon.date}} {{timer.time | date:"H:i:s" }}">
+                <div class="section-timer__content" id="deadline" data-enddate="{{timer.marathon.date}} {{timer.marathon.time | date:"H:i:s" }}">
                     <span class="section-timer__days">20<small>Days</small></span>
                     <span class="section-timer__hours">18<small>Hrs</small></span>
                     <span class="section-timer__minutes">15<small>Min</small></span>
@@ -55,9 +55,8 @@ description: Homepage detail goes here.
                         <img src="{% static 'img/ultra-marathon-runner-image.png' %}">
                     </figure>
                 </div>
-                <p>Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id
-                    elit..</p>
-                <a href="#" class="button" title="Book Me In">Book Me In</a>
+                <p>{{timer.marathon.description | safe | truncatewords:15 }}</p>
+                <a href="{% url 'book' timer.marathon.pk %}" class="button" title="Book Me In">Book Me In</a>
             </div>
         </div>
     </div>
@@ -92,7 +91,7 @@ description: Homepage detail goes here.
                             <span>{{ marathon.0.date_start }} - {{ marathon.0.date_end }}</span>
                         </span>
                             <p>{{ marathon.0.marathon_type.description|truncatechars:50 }}...</p>
-                            <a href="#" class="text-link">View More <span class="icon-right-long-arrow"></span></a>
+                            <a href="{% url 'book' marathon.0.pk %}" class="text-link">View More <span class="icon-right-long-arrow"></span></a>
                         </div>
                     </div>
                 </div>
@@ -105,7 +104,7 @@ description: Homepage detail goes here.
                             <span{{ marathon.1.date_start }} - {{ marathon.1.date_end }}</span>
                         </span>
                             <p>{{ marathon.1.marathon_type.description|truncatechars:50 }}...</p>
-                            <a href="#" class="text-link">View More <span class="icon-right-long-arrow"></span></a>
+                            <a href="{% url 'book' marathon.1.pk %}" class="text-link">View More <span class="icon-right-long-arrow"></span></a>
                         </div>
                     </div>
                 </div>
@@ -118,7 +117,7 @@ description: Homepage detail goes here.
                             <span>{{ marathon.2.date_start }} - {{ marathon.2.date_end }}</span>
                         </span>
                             <p>{{ marathon.2.marathon_type.description|truncatechars:50 }}...</p>
-                            <a href="#" class="text-link">View More <span class="icon-right-long-arrow"></span></a>
+                            <a href="{% url 'book' marathon.2.pk %}" class="text-link">View More <span class="icon-right-long-arrow"></span></a>
                         </div>
                     </div>
                 </div>
@@ -134,7 +133,7 @@ description: Homepage detail goes here.
                             <span>{{ marathon.3.date_start }} - {{ marathon.3.date_end }}</span>
                         </span>
                             <p>{{ marathon.3.marathon_type.description|truncatechars:50 }}...</p>
-                            <a href="#" class="text-link">View More <span class="icon-right-long-arrow"></span></a>
+                            <a href="{% url 'book' marathon.3.pk %}" class="text-link">View More <span class="icon-right-long-arrow"></span></a>
                         </div>
                     </div>
                 </div>
@@ -150,7 +149,7 @@ description: Homepage detail goes here.
                             <span>{{ marathon.4.date_start }} - {{ marathon.4.date_end }}</span>
                         </span>
                             <p>{{ marathon.4.marathon_type.description|truncatechars:50 }}...</p>
-                            <a href="#" class="text-link">View More <span class="icon-right-long-arrow"></span></a>
+                            <a href="{% url 'book' marathon.0.pk %}" class="text-link">View More <span class="icon-right-long-arrow"></span></a>
                         </div>
                     </div>
                 </div>

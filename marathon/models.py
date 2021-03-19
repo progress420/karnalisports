@@ -80,6 +80,9 @@ class Slider(models.Model):
             except Slider.DoesNotExist:
                 pass
         super(Slider, self).save(*args, **kwargs)
+    
+    def image_tag(self):
+        return format_html('<img href="{0}" src="{0}" width="150" height="auto" />'.format(self.image.url))
 
 
 class Testemonial(models.Model):
@@ -113,6 +116,9 @@ class Affiliation(models.Model):
     def __str__(self):
         return self.name
 
+    def image_tag(self):
+        return format_html('<img href="{0}" src="{0}" width="150" height="auto" />'.format(self.logo.url))
+
 
 class Marathon(models.Model):
     name = models.CharField(max_length=200)
@@ -120,6 +126,7 @@ class Marathon(models.Model):
     time = models.TimeField(null=True)   #not null in production
     tag = models.CharField(max_length=200)
     marathon_type = models.ForeignKey(MarathonCategory, on_delete=models.RESTRICT)
+    meta_description = RichTextField(blank=True, null=True)
     description = RichTextField(blank=True, null=True)
     image = models.ImageField(upload_to='uploads/', blank=True)
     map_image = models.ImageField(upload_to='uploads/', blank=True)
@@ -143,6 +150,10 @@ class Marathon(models.Model):
             except Marathon.DoesNotExist:
                 pass
         super(Marathon, self).save(*args, **kwargs)
+    
+    def image_tag(self):
+        return format_html('<img href="{0}" src="{0}" width="150" height="auto" />'.format(self.image.url))
+    
         
 class FAQ(models.Model):
     question = models.CharField(max_length=400)
@@ -160,6 +171,9 @@ class MarathonBookingCategory(models.Model):
     class Meta:
         verbose_name_plural = "Marathon Booking Categories"
 
+    def __str__(self):
+        return self.name
+
 class MarathonBooking(models.Model):
     person = PersonInfo()
     package = models.ForeignKey(MarathonBookingCategory, on_delete=models.RESTRICT)
@@ -170,6 +184,9 @@ class MarathonBooking(models.Model):
     others_text = models.TextField(verbose_name="Other Specify")
     visa_recommend = models.BooleanField()
     agree_policy = models.BooleanField()
+
+    class Meta:
+        verbose_name_plural = 'Marathon Bookings'
 
     def __str__(self):
         return self.person_first_name
@@ -182,15 +199,20 @@ class Itinerary(models.Model):
     category = models.ForeignKey(Marathon, on_delete=models.CASCADE)
     date = models.DateField(null=True)
     day = models.IntegerField()
-    description = models.CharField(max_length=500)
+    description = RichTextField()
+
+    class Meta:
+        verbose_name_plural = 'Itineraries'
 
     def __str__(self):
         return (str(self.category) + " Day " + str(self.day))
 
 class Timer(models.Model):
     marathon = models.ForeignKey(Marathon, on_delete=models.CASCADE)
-    time = models.TimeField()
     is_active = models.BooleanField(default=False)
+
+    class Meta:
+        verbose_name_plural = 'Home Timer'
 
     def __str__(self):
         return self.marathon.name
@@ -228,7 +250,7 @@ class Gallery(models.Model):
     is_active = models.BooleanField()
 
     class Meta:
-        verbose_name_plural = 'Galleries'
+        verbose_name_plural = 'Home Gallery'
 
     def __str__(self):
         return str(self.id)

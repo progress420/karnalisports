@@ -22,9 +22,17 @@ def homepage(request):
     mthn_cat_list = []
     for mthn in marathon:
         mthn_cat_list.append(mthn.marathon_type.id)
-    timer = Timer.objects.get(is_active=True)
+    # timer = Timer.objects.get(is_active=True)
+    # timer = get_object_or_404(Timer, is_active=True)
+    try:
+        timer = Timer.objects.get(is_active=True)
+    except Timer.DoesNotExist:
+        timer = None 
+
     gallery = Gallery.objects.all()
     # timer.time.strftime("%H:%M:%S")
+    # if not timer:
+
     context = {
         'slider': slider,
         'testemonial': testemonial,
@@ -75,10 +83,8 @@ def bookingview(request, pk):
     else:
         return render(request, 'landing-page.html', {
             'faq' : faq,
-            'maraathon' : marathon,
+            'marathon' : marathon,
         }) 
-
-        
 
 
 
