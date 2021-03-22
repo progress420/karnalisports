@@ -33,6 +33,8 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'marathon.apps.MarathonConfig',     #marathon app config here
+    'gallery.apps.GalleryConfig',
+    'home.apps.HomeConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -40,9 +42,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'ckeditor',
+    'crispy_forms',
+    # 'crispy_forms_foundation',
+    # 'admin_reorder',
 ]
 
 MIDDLEWARE = [
+    # 'admin_reorder.middleware.ModelAdminReorder',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -127,4 +133,60 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'images')
 MEDIA_URL = '/'
 
+CRISPY_TEMPLATE_PACK = 'bootstrap4' #foundation-6
+# from crispy_forms_foundation.settings import *
+
+# ADMIN_REORDER = (
+#     # Keep original label and models
+#     'sites',
+
+#     # Rename app
+#     {'app': 'auth', 'label': 'Authorisation'},
+
+#     # # Reorder app models
+#     # {'app': 'marathon', 'models': ('marathon.Timer', 'marathon.Slider')},
+
+#     {
+#         'app': 'marathon',
+#         'label': 'Homepage',
+#         'models': (
+#             'marathon.Slider',
+#             'marathon.Timer',
+#             'Testemonials',
+#         )
+#     }
+# )
+
+
 #CKEDITOR_BASEPATH = os.path.join(BASE_DIR, 'staticfiles/ckeditor')
+
+# ADMIN_ORDERING = [
+#     ('marathon', [
+#         'Slider',
+#         'Timer',
+#         'Marathon',
+#         'Testemonial',
+#         'MarathonCategory',
+#         'Affiliation',
+#         'FAQ',
+#         'MarathonBookingCategory',
+#         'MarathonBooking',
+#         'Itinerary',
+#         'Gallery',
+#         'MarathonGallery',
+#         'GalleryCategory',
+#         'KSCGallery',
+#         'ImageGallery',
+#     ])
+# ]
+
+# def get_app_list(self, request):
+#     app_dict = self._build_app_dict(request)
+#     for app_name, object_list in ADMIN_ORDERING:
+#         app = app_dict[app_name]
+#         app['models'].sort(key=lambda x: object_list.index(x['object_name']))
+#         yield app
+
+# from django.contrib import admin
+
+# admin.AdminSite.get_app_list = get_app_list

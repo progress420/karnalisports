@@ -9,6 +9,8 @@ pillow = "*"
 django-composite-field = "*"
 django-countries = "*"
 django-ckeditor = "*"
+django-crispy-forms = "*"
+crispy-forms-foundation = "*"
 
 [dev-packages]
 

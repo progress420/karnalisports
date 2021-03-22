@@ -7,5 +7,5 @@ from .views import homepage, bookingview
 urlpatterns = [
     # path('', HomePageView.as_view(), name='home'),
     path('', homepage, name='home'),
-    path('book/<int:pk>', bookingview, name='book'),
+    path('book/<slug:slug>', bookingview, name='book'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

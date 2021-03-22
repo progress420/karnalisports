@@ -4,6 +4,7 @@ description: about page desc.
 -->
 {% extends 'base.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
 {% block content %}
 <section class="billboard padding-lr50">
     <div class="js-billboard">
@@ -113,7 +114,7 @@ description: about page desc.
                     <h2 class="panel__title"><small>You are booking</small>Mountain Marathon</h2>
                             <form method="post">
                                 {% csrf_token %}
-                                {{ form.as_p }}
+                                {{ form | crispy }}
                                 <button type="submit" class="button"> Submit </button>
                             </form>
                 </div>
