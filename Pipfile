@@ -11,6 +11,7 @@ django-countries = "*"
 django-ckeditor = "*"
 django-crispy-forms = "*"
 crispy-forms-foundation = "*"
+django-allauth = "*"
 
 [dev-packages]
 

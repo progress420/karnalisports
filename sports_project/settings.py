@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'marathon.apps.MarathonConfig',     #marathon app config here
     'gallery.apps.GalleryConfig',
     'home.apps.HomeConfig',
+    'accounts.apps.AccountsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -45,6 +46,10 @@ INSTALLED_APPS = [
     'crispy_forms',
     # 'crispy_forms_foundation',
     # 'admin_reorder',
+    # 'allauth',
+    # 'allauth.account',
+    # 'allauth.socialaccount',
+    # 'allauth.socialaccount.providers.google',
 ]
 
 MIDDLEWARE = [
@@ -133,8 +138,32 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'images')
 MEDIA_URL = '/'
 
+
+AUTH_USER_MODEL = 'accounts.CustomUser'
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
+# SITE_ID = 1
+
 CRISPY_TEMPLATE_PACK = 'bootstrap4' #foundation-6
 # from crispy_forms_foundation.settings import *
+
+
+# AUTHENTICATION_BACKENDS = (
+#  'django.contrib.auth.backends.ModelBackend',
+#  'allauth.account.auth_backends.AuthenticationBackend',
+#  )
+
+# SOCIALACCOUNT_PROVIDERS = {
+#     'google': {
+#         'SCOPE': [
+#             'profile',
+#             'email',
+#         ],
+#         'AUTH_PARAMS': {
+#             'access_type': 'online',
+#         }
+#     }
+# }
 
 # ADMIN_REORDER = (
 #     # Keep original label and models
