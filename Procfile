@@ -1,0 +1,1 @@
+web: gunicorn sports_project.wsgi --log-file -
