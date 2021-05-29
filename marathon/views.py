@@ -70,7 +70,7 @@ def bookingview(request, slug):
                 marathonbooking = form.save(commit=False)
                 marathonbooking.marathon = marathon
                 marathonbooking.save()
-                return redirect('home')
+                return redirect('home_urls:home')
         else:
             form = BookForm() 
         return render(request, 'landing-page.html', {

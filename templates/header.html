@@ -1,4 +1,5 @@
 {% load static %}
+{% load socialaccount %}
 
 <header class="header">
     <div class="grid-container">
@@ -13,12 +14,12 @@
             </div>
             <nav class="header__navigation small-6 medium-4 large-10 cell flex-container align-middle">
                 <ul class="slimmenu">
-                    <li class="current-menu-item"><a href="{% url 'home' %}">Home</a></li>
-                    <li><a href="{% url 'home' %}">About Us</a></li>
+                    <li class="current-menu-item"><a href="{% url 'home_urls:home' %}">Home</a></li>
+                    <li><a href="{% url 'home_urls:home' %}">About Us</a></li>
                     <li><a href="#">Trial Race</a>
                         <ul>
                             {% for race in header_marathon%}
-                                <li><a href="#">{{ race.name }}</a></li>
+                                <li><a href="{% url 'home_urls:book' race.slug %}">{{ race.name }}</a></li>
                             {% endfor %}                            
                         </ul>
                     </li>
@@ -26,7 +27,7 @@
                     <li><a href="#">Contact</a></li>
                 </ul>
             </nav>
-            <div class="header__search small-12 medium-4 large-2 cell flex-container align-middle">
+            {% comment %} <div class="header__search small-12 medium-4 large-2 cell flex-container align-middle">
                 <form method="get" role="search" class="search-form" action="#">
                     <label for="headerSearch">
                         <span class="screen-reader-text">Search for:</span>
@@ -35,6 +36,20 @@
                     </label>
                     <button type="submit" class="search-submit icon-search" value="Go"></button>
                 </form>
+            </div> {% endcomment %}
+            <div class="header__login small-12 medium-4 large-2 cell flex-container align-middle">
+                {% if user.is_authenticated %}
+                    {% comment %} <p>Yo, <span class="user-text">{{ user.username }}</span></p> {% endcomment %}
+                    
+                    <div class="user-area">
+                        <ul>
+                            <li><a href="#">My Profile</a></li>
+                            <li><a href="{% url 'logout' %}">Logout</a></li>
+                        </ul>
+                    </div>
+                {% else %}
+                    <a href="{% provider_login_url 'google' %}">Login</a>
+                {% endif %}
             </div>
         </div>
     </div>

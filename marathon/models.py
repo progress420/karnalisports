@@ -1,6 +1,7 @@
 from django.db import models
 from django.template.defaultfilters import truncatechars
 from django.core.validators import RegexValidator
+from django.utils import tree
 # from django.contrib.contenttypes.fields import GenericForeignKey, GenericRelation
 # from django.contrib.contenttypes.models import ContentType
 from django.utils.html import format_html
@@ -22,8 +23,8 @@ class Address(CompositeField):
     street_address = models.CharField(max_length=100, verbose_name="Street Address")
     address_l2 = models.CharField(max_length=100, verbose_name="Address Line 2")
     city = models.CharField(max_length=100, verbose_name="City")
-    state = models.CharField(max_length=100, verbose_name="State")
-    zip_Code = models.IntegerField(verbose_name="ZIP/Postal")
+    state = models.CharField(max_length=100, verbose_name="State / Province / Region")
+    zip_code = models.IntegerField(verbose_name="ZIP / Postal")
     country = CountryField()
 
 
@@ -34,16 +35,16 @@ class PersonInfo(CompositeField):
         ('T', 'Prefer Not to Answer'),
     )
     first_name = models.CharField(max_length=200, verbose_name="First Name")
-    last_name = models.CharField(max_length=200, verbose_name="Last Name")
+    last_name = models.CharField(max_length=200, verbose_name="Last Name", blank=True, null=True )
     email = models.EmailField(verbose_name="Email")
     phone_regex = RegexValidator(regex=r'^\+?1?\d{9,15}$',
                                  message="Phone number must be entered in the format: '+999999999'. Up to 15 digits allowed.")
-    mobile_number = models.CharField(validators=[phone_regex], max_length=17, blank=True,
+    mobile_number = models.CharField(validators=[phone_regex], max_length=17,
                                      verbose_name="Mobile Number")  # validators should be a list
-    gender = models.CharField(max_length=1, choices=GENDER, null=True, verbose_name="Gender")
-    birthdate = models.DateField(null=True, verbose_name="Date of Birth")
-    nationality = models.CharField(max_length=100, null=True, verbose_name="Nationality")
-    passport_no = models.CharField(max_length=100, null=True, verbose_name="Passport No.")
+    gender = models.CharField(max_length=1, choices=GENDER, null=True, blank=True, verbose_name="Gender")
+    birthdate = models.DateField(null=True, blank=True, verbose_name="Date of Birth")
+    nationality = models.CharField(max_length=100, null=True, blank=True, verbose_name="Nationality")
+    passport_no = models.CharField(max_length=100, null=True, blank=True, verbose_name="Passport No.")
 
 
 class MarathonCategory(models.Model):
@@ -135,14 +136,14 @@ class MarathonBookingCategory(models.Model):
 
 class MarathonBooking(models.Model):
     person = PersonInfo()
-    package = models.ForeignKey(MarathonBookingCategory, on_delete=models.RESTRICT)
+    package = models.ForeignKey(MarathonBookingCategory, on_delete=models.RESTRICT, verbose_name="Select Package")
     marathon = models.ForeignKey(Marathon, on_delete=models.CASCADE)
     address = Address()
     arrival_date = models.DateField(verbose_name="Arrival Date")
     departure_date = models.DateField(verbose_name="Departure Date")
-    others_text = models.TextField(verbose_name="Other Specify")
-    visa_recommend = models.BooleanField()
-    agree_policy = models.BooleanField()
+    others_text = models.TextField(verbose_name="Other Specify", blank=True, null=True)
+    visa_recommend = models.BooleanField(verbose_name="Check if you need Visa Recommendation Letter.")
+    agree_policy = models.BooleanField(verbose_name="I agree to the booking policy.")
 
     class Meta:
         verbose_name_plural = 'Marathon Bookings'

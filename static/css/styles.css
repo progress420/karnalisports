@@ -6823,7 +6823,7 @@ select {
   background-color: #4d4d4d;
   border: 0;
   border-radius: 40px;
-  padding: 15px 20px;
+  padding: 5px 4px;
   color: #b3b3b3;
   font-style: italic; }
   input::-webkit-input-placeholder,
@@ -6845,6 +6845,22 @@ select {
   input[type="submit"],
   select[type="submit"] {
     padding: 16px 20px; }
+
+select, input {
+  width: 400px;
+  margin-bottom: 20px;
+}
+
+.group-header{
+  font-size: 20px;
+  display: block;
+  border-bottom: solid white 1px;
+  text-transform: uppercase;
+}
+
+.user-area ul{
+  list-style-type: none;
+}
 
 .viewport-animate {
   overflow: hidden; }
@@ -7117,6 +7133,10 @@ ul.slimmenu li.current-menu-item > a, ul.slimmenu li.active > a {
         width: calc(100% - 52px); } }
   ul.slimmenu li.current-menu-item > a + ul + .sub-toggle > i, ul.slimmenu li.active > a + ul + .sub-toggle > i {
     color: #f8971d; }
+
+.user-text{
+  font-size: 20;
+}
 
 .search-form {
   position: relative;

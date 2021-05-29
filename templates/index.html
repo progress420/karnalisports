@@ -56,7 +56,7 @@ description: Homepage detail goes here.
                     </figure>
                 </div>
                 <p>{{timer.marathon.description | safe | truncatewords:15 }}</p>
-                <a href=" {% url 'book' timer.marathon.slug %} " class="button" title="Book Me In">Book Me In</a>
+                <a href=" {% url 'home_urls:book' timer.marathon.slug %} " class="button" title="Book Me In">Book Me In</a>
             </div>
         </div>
     </div>

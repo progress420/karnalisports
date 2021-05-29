@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
+    'django_seed',
 
 ]
 
@@ -148,7 +149,7 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'images')
 MEDIA_URL = '/'
 
-CRISPY_TEMPLATE_PACK = 'bootstrap4' #foundation-6
+CRISPY_TEMPLATE_PACK = 'bootstrap4' #foundation-6 /bootstrap4
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'

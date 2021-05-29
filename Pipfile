@@ -12,6 +12,7 @@ django-ckeditor = "*"
 django-crispy-forms = "*"
 crispy-forms-foundation = "*"
 django-allauth = "*"
+django-seed = "*"
 
 [dev-packages]
 
