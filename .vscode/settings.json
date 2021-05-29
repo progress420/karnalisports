@@ -1,5 +1,7 @@
 {
     "python.linting.pylintEnabled": false,
     "python.linting.flake8Enabled": true,
-    "python.linting.enabled": false
+    "python.linting.enabled": false,
+    "python.pythonPath": "/home/joyboy/.local/share/virtualenvs/karnalisports-AxeKh4hI/bin/python",
+    // "python.analysis.extraPaths": ["app", "another/path/etc"]
 }

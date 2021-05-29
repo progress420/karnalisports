@@ -87,4 +87,5 @@ def bookingview(request, slug):
 
 
 
-
+def testview(request):
+    return render(request, "test_index.html")

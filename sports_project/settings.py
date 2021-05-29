@@ -29,6 +29,14 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -40,11 +48,18 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.sites',
     'django.contrib.staticfiles',
     'ckeditor',
     'crispy_forms',
     # 'crispy_forms_foundation',
     # 'admin_reorder',
+    'accounts.apps.AccountsConfig',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+
 ]
 
 MIDDLEWARE = [
@@ -134,59 +149,22 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'images')
 MEDIA_URL = '/'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4' #foundation-6
-# from crispy_forms_foundation.settings import *
 
-# ADMIN_REORDER = (
-#     # Keep original label and models
-#     'sites',
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
 
-#     # Rename app
-#     {'app': 'auth', 'label': 'Authorisation'},
+SITE_ID = 2
 
-#     # # Reorder app models
-#     # {'app': 'marathon', 'models': ('marathon.Timer', 'marathon.Slider')},
+#Providers specific setting
 
-#     {
-#         'app': 'marathon',
-#         'label': 'Homepage',
-#         'models': (
-#             'marathon.Slider',
-#             'marathon.Timer',
-#             'Testemonials',
-#         )
-#     }
-# )
-
-
-#CKEDITOR_BASEPATH = os.path.join(BASE_DIR, 'staticfiles/ckeditor')
-
-# ADMIN_ORDERING = [
-#     ('marathon', [
-#         'Slider',
-#         'Timer',
-#         'Marathon',
-#         'Testemonial',
-#         'MarathonCategory',
-#         'Affiliation',
-#         'FAQ',
-#         'MarathonBookingCategory',
-#         'MarathonBooking',
-#         'Itinerary',
-#         'Gallery',
-#         'MarathonGallery',
-#         'GalleryCategory',
-#         'KSCGallery',
-#         'ImageGallery',
-#     ])
-# ]
-
-# def get_app_list(self, request):
-#     app_dict = self._build_app_dict(request)
-#     for app_name, object_list in ADMIN_ORDERING:
-#         app = app_dict[app_name]
-#         app['models'].sort(key=lambda x: object_list.index(x['object_name']))
-#         yield app
-
-# from django.contrib import admin
-
-# admin.AdminSite.get_app_list = get_app_list
+SOCIAL_ACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        }
+    }
+}
