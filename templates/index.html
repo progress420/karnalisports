@@ -79,7 +79,7 @@ description: Homepage detail goes here.
         </div>
         <div class="grid-x grid-padding-x">
             <div class="trail-wrap small-12 cell">
-                {% comment %} <div class="section-trail-race__item span-col-3 span-row-2">
+                <div class="section-trail-race__item span-col-3 span-row-2">
                     <div class="section-trail-race__content-holder position-relative" style="background-image: url('{{root}}uploads/trail-race-image-1.jpg')">
                         <figure class="section-trail-race__image background-gradient-black-transparent-upward-before">
                             <img src="{{root}}uploads/trail-race-image-1.jpg" alt="Trail Race">
@@ -91,7 +91,7 @@ description: Homepage detail goes here.
                             <span>{{ marathon.0.date_start }} - {{ marathon.0.date_end }}</span>
                         </span>
                             <p>{{ marathon.0.marathon_type.description|truncatechars:50 }}...</p>
-                            <a href="{% url 'book' marathon.0.slug %}" class="text-link">View More <span class="icon-right-long-arrow"></span></a>
+                            <a href="{% url 'home_urls:book' marathon.0.slug %}" class="text-link">View More <span class="icon-right-long-arrow"></span></a>
                         </div>
                     </div>
                 </div>
@@ -101,10 +101,10 @@ description: Homepage detail goes here.
                             <h3>{{ marathon.1.name}}</h3>
                             <span class="section-trail-race__timeline-tag">
                             <span>{{ marathon.1.tag }}</span>
-                            <span{{ marathon.1.date_start }} - {{ marathon.1.date_end }}</span>
+                            <span>{{ marathon.1.date_start }} - {{ marathon.1.date_end }}</span>
                         </span>
                             <p>{{ marathon.1.marathon_type.description|truncatechars:50 }}...</p>
-                            <a href="{% url 'book' marathon.1.slug %}" class="text-link">View More <span class="icon-right-long-arrow"></span></a>
+                            <a href="{% url 'home_urls:book' marathon.1.slug %}" class="text-link">View More <span class="icon-right-long-arrow"></span></a>
                         </div>
                     </div>
                 </div>
@@ -117,7 +117,7 @@ description: Homepage detail goes here.
                             <span>{{ marathon.2.date_start }} - {{ marathon.2.date_end }}</span>
                         </span>
                             <p>{{ marathon.2.marathon_type.description|truncatechars:50 }}...</p>
-                            <a href="{% url 'book' marathon.2.slug %}" class="text-link">View More <span class="icon-right-long-arrow"></span></a>
+                            <a href="{% url 'home_urls:book' marathon.2.slug %}" class="text-link">View More <span class="icon-right-long-arrow"></span></a>
                         </div>
                     </div>
                 </div>
@@ -133,7 +133,7 @@ description: Homepage detail goes here.
                             <span>{{ marathon.3.date_start }} - {{ marathon.3.date_end }}</span>
                         </span>
                             <p>{{ marathon.3.marathon_type.description|truncatechars:50 }}...</p>
-                            <a href="{% url 'book' marathon.3.slug %}" class="text-link">View More <span class="icon-right-long-arrow"></span></a>
+                            <a href="{% url 'home_urls:book' marathon.3.slug %}" class="text-link">View More <span class="icon-right-long-arrow"></span></a>
                         </div>
                     </div>
                 </div>
@@ -149,10 +149,10 @@ description: Homepage detail goes here.
                             <span>{{ marathon.4.date_start }} - {{ marathon.4.date_end }}</span>
                         </span>
                             <p>{{ marathon.4.marathon_type.description|truncatechars:50 }}...</p>
-                            <a href="{% url 'book' marathon.4.slug %}" class="text-link">View More <span class="icon-right-long-arrow"></span></a>
+                            <a href="{% url 'home_urls:book' marathon.4.slug %}" class="text-link">View More <span class="icon-right-long-arrow"></span></a>
                         </div>
                     </div>
-                </div>  {% endcomment %}
+                </div>
                 <div class="section-trail-race__item span-col-2 span-row-2 trail-banner">
                     <div class="section-trail-race__content-holder section-trail-race__content-holder--border-bottom position-relative" style="background-image: url('{{root}}uploads/trail-race-image-4.jpg')">
                         <figure class="section-trail-race__image background-gradient-black-transparent-downward-before">

@@ -5,7 +5,7 @@ from django.utils import tree
 # from django.contrib.contenttypes.fields import GenericForeignKey, GenericRelation
 # from django.contrib.contenttypes.models import ContentType
 from django.utils.html import format_html
-# import uuid
+import uuid
 from django.utils.text import slugify
 
 from composite_field import CompositeField
@@ -74,7 +74,7 @@ class Affiliation(models.Model):
 
 
 class Marathon(models.Model):
-    # id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    id = models.IntegerField(primary_key=True, editable=False)
     name = models.CharField(max_length=200)
     slug = models.SlugField(max_length=300,)
     date = models.DateField()
