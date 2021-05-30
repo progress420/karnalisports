@@ -5,7 +5,7 @@ from django.utils import tree
 # from django.contrib.contenttypes.fields import GenericForeignKey, GenericRelation
 # from django.contrib.contenttypes.models import ContentType
 from django.utils.html import format_html
-import uuid
+# import uuid
 from django.utils.text import slugify
 
 from composite_field import CompositeField

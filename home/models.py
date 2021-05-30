@@ -1,7 +1,6 @@
 from django.db import models
 from django.template.defaultfilters import truncatechars
 from django.utils.html import format_html
-import uuid
 
 from marathon.models import Marathon
 

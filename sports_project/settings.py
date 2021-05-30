@@ -28,7 +28,7 @@ SECRET_KEY = 's8yre73ls^l&=ok+4!m%@)@z5f++km-eakn%+wukukvj-6pf@r'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False #True
 
-ALLOWED_HOSTS = ['karnalisports.herokuapp.com']
+ALLOWED_HOSTS = ['*']
 
 
 AUTHENTICATION_BACKENDS = [
