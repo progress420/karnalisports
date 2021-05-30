@@ -74,7 +74,7 @@ class Affiliation(models.Model):
 
 
 class Marathon(models.Model):
-    id = models.IntegerField(primary_key=True, editable=False)
+    # id = models.IntegerField(primary_key=True, editable=False)
     name = models.CharField(max_length=200)
     slug = models.SlugField(max_length=300,)
     date = models.DateField()
