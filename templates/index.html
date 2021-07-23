@@ -56,7 +56,9 @@ description: Homepage detail goes here.
                     </figure>
                 </div>
                 <p>{{timer.marathon.description | safe | truncatewords:15 }}</p>
-                <a href=" {% url 'home_urls:book' timer.marathon.slug %} " class="button" title="Book Me In">Book Me In</a>
+                {% if book %}
+                    <a href=" {% url 'home_urls:book' timer.marathon.slug %} " class="button" title="Book Me In">Book Me In</a>
+                {% endif %}
             </div>
         </div>
     </div>
@@ -80,9 +82,9 @@ description: Homepage detail goes here.
         <div class="grid-x grid-padding-x">
             <div class="trail-wrap small-12 cell">
                 <div class="section-trail-race__item span-col-3 span-row-2">
-                    <div class="section-trail-race__content-holder position-relative" style="background-image: url('{{root}}uploads/trail-race-image-1.jpg')">
+                    <div class="section-trail-race__content-holder position-relative" style="background-image: url('{{ marathon.0.image.url }}')">
                         <figure class="section-trail-race__image background-gradient-black-transparent-upward-before">
-                            <img src="{{root}}uploads/trail-race-image-1.jpg" alt="Trail Race">
+                            <img src="{{ marathon.0.image.url }}" alt="Trail Race">
                         </figure>
                         <div class="section-trail-race__detail position-absolute position-bottom">
                             <h3>{{ marathon.0.name }}</h3>
@@ -91,7 +93,9 @@ description: Homepage detail goes here.
                             <span>{{ marathon.0.date_start }} - {{ marathon.0.date_end }}</span>
                         </span>
                             <p>{{ marathon.0.marathon_type.description|truncatechars:50 }}...</p>
-                            <a href="{% url 'home_urls:book' marathon.0.slug %}" class="text-link">View More <span class="icon-right-long-arrow"></span></a>
+                            {% if book %}
+                                <a href="{% url 'home_urls:book' marathon.0.slug %}" class="text-link">View More <span class="icon-right-long-arrow"></span></a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -104,7 +108,9 @@ description: Homepage detail goes here.
                             <span>{{ marathon.1.date_start }} - {{ marathon.1.date_end }}</span>
                         </span>
                             <p>{{ marathon.1.marathon_type.description|truncatechars:50 }}...</p>
-                            <a href="{% url 'home_urls:book' marathon.1.slug %}" class="text-link">View More <span class="icon-right-long-arrow"></span></a>
+                            {% if book %}                            
+                                <a href="{% url 'home_urls:book' marathon.1.slug %}" class="text-link">View More <span class="icon-right-long-arrow"></span></a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -117,14 +123,16 @@ description: Homepage detail goes here.
                             <span>{{ marathon.2.date_start }} - {{ marathon.2.date_end }}</span>
                         </span>
                             <p>{{ marathon.2.marathon_type.description|truncatechars:50 }}...</p>
-                            <a href="{% url 'home_urls:book' marathon.2.slug %}" class="text-link">View More <span class="icon-right-long-arrow"></span></a>
+                            {% if book %}
+                                <a href="{% url 'home_urls:book' marathon.2.slug %}" class="text-link">View More <span class="icon-right-long-arrow"></span></a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
                 <div class="section-trail-race__item span-col-4">
                     <div class="section-trail-race__content-holder medium-flex-container">
-                        <figure class="section-trail-race__image" style="background-image: url('{{root}}uploads/trail-race-image-2.jpg')">
-                            <img src="{{root}}uploads/trail-race-image-2.jpg" alt="Trail Race">
+                        <figure class="section-trail-race__image" style="background-image: url('{{ marathon.3.image.url }}')">
+                            <img src="{{ marathon.3.image.url }}" alt="Trail Race">
                         </figure>
                         <div class="section-trail-race__detail">
                             <h3>{{ marathon.3.name}}</h3>
@@ -133,14 +141,16 @@ description: Homepage detail goes here.
                             <span>{{ marathon.3.date_start }} - {{ marathon.3.date_end }}</span>
                         </span>
                             <p>{{ marathon.3.marathon_type.description|truncatechars:50 }}...</p>
-                            <a href="{% url 'home_urls:book' marathon.3.slug %}" class="text-link">View More <span class="icon-right-long-arrow"></span></a>
+                            {% if book %}
+                                <a href="{% url 'home_urls:book' marathon.3.slug %}" class="text-link">View More <span class="icon-right-long-arrow"></span></a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
                 <div class="section-trail-race__item span-col-4">
                     <div class="section-trail-race__content-holder medium-flex-container">
-                        <figure class="section-trail-race__image" style="background-image: url('{{root}}uploads/trail-race-image-3.jpg')">
-                            <img src="{{root}}uploads/trail-race-image-3.jpg" alt="Trail Race">
+                        <figure class="section-trail-race__image" style="background-image: url('{{ marathon.4.image.url }}')">
+                            <img src="{{ marathon.4.image.url }}" alt="Trail Race">
                         </figure>
                         <div class="section-trail-race__detail">
                             <h3>{{ marathon.4.name}}</h3>
@@ -149,7 +159,9 @@ description: Homepage detail goes here.
                             <span>{{ marathon.4.date_start }} - {{ marathon.4.date_end }}</span>
                         </span>
                             <p>{{ marathon.4.marathon_type.description|truncatechars:50 }}...</p>
-                            <a href="{% url 'home_urls:book' marathon.4.slug %}" class="text-link">View More <span class="icon-right-long-arrow"></span></a>
+                            {% if book %}
+                                <a href="{% url 'home_urls:book' marathon.4.slug %}" class="text-link">View More <span class="icon-right-long-arrow"></span></a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>

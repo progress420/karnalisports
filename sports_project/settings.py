@@ -12,8 +12,11 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
-import django_heroku
+# import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,9 +30,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 's8yre73ls^l&=ok+4!m%@)@z5f++km-eakn%+wukukvj-6pf@r'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True #Change this in production
+DEBUG = False  # Change this in production
 
-ALLOWED_HOSTS = ['*']  #change this in production 
+ALLOWED_HOSTS = ['*']  # change this in production
 
 
 AUTHENTICATION_BACKENDS = [
@@ -43,7 +46,9 @@ AUTHENTICATION_BACKENDS = [
 # Application definition
 
 INSTALLED_APPS = [
-    'marathon.apps.MarathonConfig',     #marathon app config here
+    'cloudinary',
+    'whitenoise.runserver_nostatic',
+    'marathon.apps.MarathonConfig',  # marathon app config here
     'gallery.apps.GalleryConfig',
     'home.apps.HomeConfig',
     'django.contrib.admin',
@@ -62,7 +67,6 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
-    'django_seed',
 
 ]
 
@@ -103,13 +107,24 @@ WSGI_APPLICATION = 'sports_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'ksc_django',
+#         'USER': 'django_user',
+#         'PASSWORD': 'password',
+#         'HOST': 'localhost',
+#         'PORT': '3306'
+#     }
+
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -148,19 +163,23 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_CDN = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = STATIC_CDN
 STATIC_URL = '/static/'
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'images')
-# MEDIA_URL = '/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'images/')
+MEDIA_URL = '/images/'
 
-CRISPY_TEMPLATE_PACK = 'bootstrap4' #foundation-6 /bootstrap4
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'  # foundation-6 /bootstrap4
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
 SITE_ID = 2
 
-#Providers specific setting
+# Providers specific setting
 
 SOCIAL_ACCOUNT_PROVIDERS = {
     'google': {
@@ -175,4 +194,11 @@ SOCIAL_ACCOUNT_PROVIDERS = {
 }
 
 # Activate Django-Heroku.
-django_heroku.settings(locals())
+# django_heroku.settings(locals())
+
+cloudinary.config(
+    cloud_name="dxksi758m",
+    api_key="741781474765948",
+    api_secret="40GnurvGY78vNw6adMkKzy0T0zo",
+    # secure=True
+)

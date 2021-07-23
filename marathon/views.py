@@ -6,8 +6,8 @@ from django.http import HttpResponseRedirect
 from datetime import date
 
 from .models import (
-    Marathon, MarathonBooking, FAQ, Itinerary, 
-) 
+    Marathon, MarathonBooking, FAQ, Itinerary,
+)
 from gallery.models import (
     Gallery, ImageGallery,
 )
@@ -19,24 +19,26 @@ from .forms import BookForm
 #     model = Slider
 #     template_name = 'home.html'
 
+
 def homepage(request):
     slider = Slider.objects.exclude(image_order=0)
     testemonial = Testemonial.objects.all()
     marathon = Marathon.objects.exclude(is_active=False)[:5]
-    home_gallery = ImageGallery.objects.filter(gallery__category__name='Homepage')
+    home_gallery = ImageGallery.objects.filter(
+        gallery__category__name='Homepage')
     mthn_cat_list = []
     for mthn in marathon:
         mthn_cat_list.append(mthn.marathon_type.id)
     try:
         timer = Timer.objects.get(is_active=True)
     except Timer.DoesNotExist:
-        timer = None 
+        timer = None
     context = {
         'slider': slider,
         'testemonial': testemonial,
-        'marathon' : marathon,
-        'range' : range(1,4),
-        'timer' : timer,
+        'marathon': marathon,
+        'range': range(1, 4),
+        'timer': timer,
         # 'gallery' : gallery,
         'mthn_cat_list': mthn_cat_list,
         'home_gallery': home_gallery,
@@ -56,6 +58,7 @@ def homepage(request):
 #         kwargs['marathon'] = Marathon.objects.get(id=kwargs(self.id))
 #         return super().get_context_data(**kwargs)
 
+
 def bookingview(request, slug):
     # marathon = Marathon.objects.filter(id=id)
     marathon = get_object_or_404(Marathon, slug=slug)
@@ -72,20 +75,21 @@ def bookingview(request, slug):
                 marathonbooking.save()
                 return redirect('home_urls:home')
         else:
-            form = BookForm() 
+            form = BookForm()
         return render(request, 'landing-page.html', {
-            'form' : form,
-            'faq' : faq,
-            'marathon' : marathon,
-            'path' : itinerary,
+            'form': form,
+            'faq': faq,
+            'marathon': marathon,
+            'path': itinerary,
         })
     else:
         return render(request, 'landing-page.html', {
-            'faq' : faq,
-            'marathon' : marathon,
-        }) 
+            'faq': faq,
+            'marathon': marathon,
+        })
 
 
+def profileview(request):
+    # get user , filter booking forms of user, by upcoming, already gone
 
-def testview(request):
-    return render(request, "test_index.html")
+    return render(request, "profile.html")

@@ -1,6 +1,7 @@
 from django.db import models
 import uuid
 from django.utils.html import format_html
+from cloudinary.models import CloudinaryField
 
 
 class GalleryCategory(models.Model):
@@ -12,7 +13,8 @@ class GalleryCategory(models.Model):
         verbose_name_plural = "Gallery Categories"
 
     def __str__(self):
-        return self.name  
+        return self.name
+
 
 class Gallery(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -31,5 +33,6 @@ class Gallery(models.Model):
 
 
 class ImageGallery(models.Model):
-    image = models.ImageField(upload_to='gallery/')
+    # image = models.ImageField(upload_to='gallery/')
+    image = CloudinaryField('image/gallery')
     gallery = models.ForeignKey(Gallery, on_delete=models.RESTRICT)

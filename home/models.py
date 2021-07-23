@@ -1,8 +1,10 @@
 from django.db import models
 from django.template.defaultfilters import truncatechars
 from django.utils.html import format_html
+from cloudinary.models import CloudinaryField
 
 from marathon.models import Marathon
+
 
 class Slider(models.Model):
     IMAGE_ORDER = (
@@ -13,7 +15,8 @@ class Slider(models.Model):
     )
     title = models.CharField(max_length=200)
     description = models.TextField()
-    image = models.ImageField(upload_to='slider/')
+    image = CloudinaryField('image/slider')
+    # image = models.ImageField(upload_to='slider/')
     image_order = models.IntegerField(choices=IMAGE_ORDER, default=0)
     link = models.URLField()
     link_title = models.CharField(max_length=200)
@@ -42,21 +45,24 @@ class Slider(models.Model):
     def image_tag(self):
         return format_html('<img href="{0}" src="{0}" width="150" height="auto" />'.format(self.image.url))
 
+
 class Testemonial(models.Model):
     person = models.CharField(max_length=200)
     position = models.CharField(max_length=200)
-    image = models.ImageField(upload_to='testemonial/')
+    image = CloudinaryField('image/slider')
+    # image = models.ImageField(upload_to='testemonial/')
     testemonial_text = models.TextField()
 
     def __str__(self):
         return self.person
-    
+
     def image_tag(self):
         return format_html('<img href="{0}" src="{0}" width="100" height="auto" />'.format(self.image.url))
 
     @property
     def short_description(self):
         return truncatechars(self.testemonial_text, 40)
+
 
 class Timer(models.Model):
     marathon = models.ForeignKey(Marathon, on_delete=models.CASCADE)
@@ -78,4 +84,3 @@ class Timer(models.Model):
             except Timer.DoesNotExist:
                 pass
         super(Timer, self).save(*args, **kwargs)
-

@@ -23,8 +23,20 @@
                             {% endfor %}                            
                         </ul>
                     </li>
-                    <li><a href="#">Blog</a></li>
                     <li><a href="#">Contact</a></li>
+                    <li><a href="#">Account</a>
+                    {% if user.is_authenticated %}
+                        {% comment %} <p>Yo, <span class="user-text">{{ user.username }}</span></p> {% endcomment %}
+                            <ul>
+                                <li><a href="{% url 'home_urls:profile' %}">MY PROFILE</a></li>
+                                <li><a href="{% url 'logout' %}">LOGOUT</a></li>
+                            </ul>
+                    {% else %}
+                        <ul>
+                            <li><a href="{% provider_login_url 'google' %}">LOGIN</a></li>
+                        </ul>
+                    {% endif %}
+                    </li>
                 </ul>
             </nav>
             {% comment %} <div class="header__search small-12 medium-4 large-2 cell flex-container align-middle">
@@ -37,20 +49,8 @@
                     <button type="submit" class="search-submit icon-search" value="Go"></button>
                 </form>
             </div> {% endcomment %}
-            <div class="header__login small-12 medium-4 large-2 cell flex-container align-middle">
-                {% if user.is_authenticated %}
-                    {% comment %} <p>Yo, <span class="user-text">{{ user.username }}</span></p> {% endcomment %}
-                    
-                    <div class="user-area">
-                        <ul>
-                            <li><a href="#">My Profile</a></li>
-                            <li><a href="{% url 'logout' %}">Logout</a></li>
-                        </ul>
-                    </div>
-                {% else %}
-                    <a href="{% provider_login_url 'google' %}">Login</a>
-                {% endif %}
-            </div>
+
         </div>
     </div>
 </header>
+

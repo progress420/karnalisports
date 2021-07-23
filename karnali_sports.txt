@@ -1,0 +1,12 @@
+DB
+User: karnalis_spw
+password: kR5aX+@a!E7q*r7%
+
+cpanel
+Username: karnalis
+Password: 7UZg@2B-58Otzv
+
+
+ftp
+username: karnalis_ftp@karnalisports.com
+password: 85z0]eXzCUXP

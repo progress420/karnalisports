@@ -10,14 +10,14 @@ django-composite-field = "*"
 django-countries = "*"
 django-ckeditor = "*"
 django-crispy-forms = "*"
-crispy-forms-foundation = "*"
 django-allauth = "*"
-django-seed = "*"
-django-heroku = "*"
 gunicorn = "*"
 whitenoise = "*"
+mysqlclient = "*"
+cloudinary = "*"
 
 [dev-packages]
+autopep8 = "*"
 
 [requires]
 python_version = "3.9"

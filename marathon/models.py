@@ -11,19 +11,23 @@ from django.utils.text import slugify
 from composite_field import CompositeField
 from django_countries.fields import CountryField
 from ckeditor.fields import RichTextField
+from cloudinary.models import CloudinaryField
 
 
-# Composite Fields 
+# Composite Fields
 class Distance(CompositeField):
     start = models.IntegerField()
     end = models.IntegerField()
 
 
 class Address(CompositeField):
-    street_address = models.CharField(max_length=100, verbose_name="Street Address")
-    address_l2 = models.CharField(max_length=100, verbose_name="Address Line 2")
+    street_address = models.CharField(
+        max_length=100, verbose_name="Street Address")
+    address_l2 = models.CharField(
+        max_length=100, verbose_name="Address Line 2")
     city = models.CharField(max_length=100, verbose_name="City")
-    state = models.CharField(max_length=100, verbose_name="State / Province / Region")
+    state = models.CharField(
+        max_length=100, verbose_name="State / Province / Region")
     zip_code = models.IntegerField(verbose_name="ZIP / Postal")
     country = CountryField()
 
@@ -35,16 +39,21 @@ class PersonInfo(CompositeField):
         ('T', 'Prefer Not to Answer'),
     )
     first_name = models.CharField(max_length=200, verbose_name="First Name")
-    last_name = models.CharField(max_length=200, verbose_name="Last Name", blank=True, null=True )
+    last_name = models.CharField(
+        max_length=200, verbose_name="Last Name", blank=True, null=True)
     email = models.EmailField(verbose_name="Email")
     phone_regex = RegexValidator(regex=r'^\+?1?\d{9,15}$',
                                  message="Phone number must be entered in the format: '+999999999'. Up to 15 digits allowed.")
     mobile_number = models.CharField(validators=[phone_regex], max_length=17,
                                      verbose_name="Mobile Number")  # validators should be a list
-    gender = models.CharField(max_length=1, choices=GENDER, null=True, blank=True, verbose_name="Gender")
-    birthdate = models.DateField(null=True, blank=True, verbose_name="Date of Birth")
-    nationality = models.CharField(max_length=100, null=True, blank=True, verbose_name="Nationality")
-    passport_no = models.CharField(max_length=100, null=True, blank=True, verbose_name="Passport No.")
+    gender = models.CharField(
+        max_length=1, choices=GENDER, null=True, blank=True, verbose_name="Gender")
+    birthdate = models.DateField(
+        null=True, blank=True, verbose_name="Date of Birth")
+    nationality = models.CharField(
+        max_length=100, null=True, blank=True, verbose_name="Nationality")
+    passport_no = models.CharField(
+        max_length=100, null=True, blank=True, verbose_name="Passport No.")
 
 
 class MarathonCategory(models.Model):
@@ -64,7 +73,8 @@ class MarathonCategory(models.Model):
 
 class Affiliation(models.Model):
     name = models.CharField(max_length=100)
-    logo = models.ImageField(upload_to="uploads/", null=True, blank=True)
+    logo = CloudinaryField('image/affiliation', blank=True)
+    # logo = models.ImageField(upload_to="uploads/", null=True, blank=True)
 
     def __str__(self):
         return self.name
@@ -80,11 +90,14 @@ class Marathon(models.Model):
     date = models.DateField()
     time = models.TimeField(null=True)  # not null in production
     tag = models.CharField(max_length=200)
-    marathon_type = models.ForeignKey(MarathonCategory, on_delete=models.RESTRICT)
+    marathon_type = models.ForeignKey(
+        MarathonCategory, on_delete=models.RESTRICT)
     meta_description = RichTextField(blank=True, null=True)
     description = RichTextField(blank=True, null=True)
-    image = models.ImageField(upload_to='uploads/', blank=True)
-    map_image = models.ImageField(upload_to='uploads/', blank=True)
+    image = CloudinaryField('image/marathon', blank=True)
+    map_image = CloudinaryField('image/marathon', blank=True)
+    # image = models.ImageField(upload_to='uploads/', blank=True)
+    # map_image = models.ImageField(upload_to='uploads/', blank=True)
     distance = Distance()
     location = models.CharField(max_length=100)
     is_active = models.BooleanField(default=False)
@@ -99,7 +112,8 @@ class Marathon(models.Model):
         self.slug = slugify(str(self.name)+"-"+str(self.date)+"-booking page")
         if self.is_active:
             try:
-                temp = Marathon.objects.get(marathon_type=self.marathon_type, is_active=True)
+                temp = Marathon.objects.get(
+                    marathon_type=self.marathon_type, is_active=True)
                 if self != temp:
                     temp.is_active = False
                     temp.save()
@@ -109,8 +123,6 @@ class Marathon(models.Model):
 
     def image_tag(self):
         return format_html('<img href="{0}" src="{0}" width="150" height="auto" />'.format(self.image.url))
-
-    
 
 
 class FAQ(models.Model):
@@ -136,14 +148,18 @@ class MarathonBookingCategory(models.Model):
 
 class MarathonBooking(models.Model):
     person = PersonInfo()
-    package = models.ForeignKey(MarathonBookingCategory, on_delete=models.RESTRICT, verbose_name="Select Package")
+    package = models.ForeignKey(
+        MarathonBookingCategory, on_delete=models.RESTRICT, verbose_name="Select Package")
     marathon = models.ForeignKey(Marathon, on_delete=models.CASCADE)
     address = Address()
     arrival_date = models.DateField(verbose_name="Arrival Date")
     departure_date = models.DateField(verbose_name="Departure Date")
-    others_text = models.TextField(verbose_name="Other Specify", blank=True, null=True)
-    visa_recommend = models.BooleanField(verbose_name="Check if you need Visa Recommendation Letter.")
-    agree_policy = models.BooleanField(verbose_name="I agree to the booking policy.")
+    others_text = models.TextField(
+        verbose_name="Other Specify", blank=True, null=True)
+    visa_recommend = models.BooleanField(
+        verbose_name="Check if you need Visa Recommendation Letter.")
+    agree_policy = models.BooleanField(
+        verbose_name="I agree to the booking policy.")
 
     class Meta:
         verbose_name_plural = 'Marathon Bookings'

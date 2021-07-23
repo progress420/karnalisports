@@ -84,7 +84,9 @@ description: about page desc.
                     {{marathon.description | safe}}
                 </div>
                 <div class="margin-tb50" data-magellan-target="maps-panel" id="maps-panel">
-                    <img src="{{ marathon.map_image.url }}" alt="">
+                    {% if marathon.map_image %}
+                        <img src="{{ marathon.map_image.url }}" alt="">
+                    {% endif %}
                 </div>
                 <div class="margin-tb50" data-magellan-target="faq-panel" id="faq-panel">
                     <h2 class="panel__title">Questions? Look here</h2>
@@ -114,7 +116,7 @@ description: about page desc.
                 <div class="margin-tb50" data-magellan-target="book-panel" id="book-panel">
                     <h2 class="panel__title"><small>You are booking</small>Mountain Marathon</h2>
                     <div class="row">
-                        {% if user.is_authenticated %}
+                        {% if user.is_authenticated and marathon.date > now %}
                             <form method="post">
                                 {% csrf_token %}
                                 <p><span class="group-header">BOOKER INFO</span></p>
@@ -150,9 +152,11 @@ description: about page desc.
                                 {{ form.agree_policy | as_crispy_field}}
                                 <button type="submit" class="button"> Submit </button>
                             </form>
-                        {% else %}
+                        {% elif marathon.date > now %}
                             Please Login in order to book for the marathon. <br>
                             <a href="{% provider_login_url 'google' %}">Login</a>
+                        {% else %}
+                            Marathon has ended.
                         {% endif %}
                     </div> 
                 </div>
